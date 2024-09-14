@@ -17,7 +17,7 @@ VALIDATE(){
 }
 
 
-TIMESTAMP=$(date %d-%m-%Y::%h:%m:%s)
+TIMESTAMP=$(date +%d-%m-%Y::%h:%m:%s)
 LOGFILE="/tmp/$?-TIMESTAMP.log"
 
 if [ $user_id -ne 0 ]
