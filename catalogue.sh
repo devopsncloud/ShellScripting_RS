@@ -39,7 +39,7 @@ dnf install nodejs -y &>> $LOGFILE
 VALIDATE $? "Nodejs Installation"
 
 
-id roboshop
+id roboshop &>> $LOGFILE
 
 if [ $? -ne 0 ]
 then
@@ -57,7 +57,7 @@ VALIDATE $? "Application download "
 
 cd /app
 unzip -o /tmp/catalogue.zip  &>> $LOGFILE
-# unzip -o /tmp/catalogue.zip  &>> $LOGFILE
+unzip -o /tmp/catalogue.zip  &>> $LOGFILE
 VALIDATE $? "Unzipping catalog"
 
 cd /app
