@@ -20,6 +20,7 @@ VALIDATE(){
 
 TIMESTAMP=$(date +%d-%m-%Y::%H:%M:%S)
 LOGFILE="/tmp/$0-$TIMESTAMP.log"
+exec &>$LOGFILE
 
 if [ $user_id -ne 0 ]
 then
@@ -32,23 +33,23 @@ fi
 dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y &>> $LOGFILE
 VALIDATE $? "Downloading redis repo"
 
-dnf module enable redis:remi-6.2 -y &>> $LOGFILE
+dnf module enable redis:remi-6.2 -y 
 VALIDATE $? "Enabling redis:remi-6.2"
 
-dnf install redis -y &>> $LOGFILE
+dnf install redis -y 
 VALIDATE $? "redis Installation"
 
 sed -i "s/127.0.0.1/0.0.0.0/g" /etc/redis.conf
 
-systemctl enable user &>> $LOGFILE
+systemctl enable user 
 VALIDATE $? "user service enabled"
 
-systemctl start user &>> $LOGFILE
+systemctl start user 
 VALIDATE $? "user service started"
 
 
-systemctl enable redis &>> $LOGFILE
+systemctl enable redis 
 VALIDATE $? "redis service enabled"
 
-systemctl start redis &>> $LOGFILE
+systemctl start redis 
 VALIDATE $? "redis service started"
