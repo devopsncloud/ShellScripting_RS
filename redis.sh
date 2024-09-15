@@ -38,7 +38,7 @@ VALIDATE $? "Enabling redis:remi-6.2"
 dnf install redis -y &>> $LOGFILE
 VALIDATE $? "redis Installation"
 
-sed -i "s/127.0.0.1/0.0.0.0/" /etc/redis.conf
+sed -i "s/127.0.0.1/0.0.0.0/g" /etc/redis.conf
 
 systemctl enable user &>> $LOGFILE
 VALIDATE $? "user service enabled"
