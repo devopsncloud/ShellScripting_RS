@@ -33,7 +33,6 @@ VALIDATE $? "Copied Mongdb repo"
 
 dnf install mongodb-org -y &>> $LOGFILE
 VALIDATE $? "Installed Mongodb"
-exit 1
 
 systemctl enable mongod &>> $LOGFILE
 VALIDATE $? "Enabled Mongodb"
