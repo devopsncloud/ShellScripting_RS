@@ -10,9 +10,9 @@ NC="\e[0m"
 VALIDATE(){
     if [ $1 -ne 0 ]
     then
-        echo "$2 ...Installation FAILED"
+        echo "$2 ... FAILED"
     else
-        echo "$2 ... Installation SUCCESS"
+        echo "$2 ... SUCCESS"
     fi 
 }
 
@@ -31,7 +31,7 @@ fi
 cp mongo.repo /etc/yum.repos.d/mongo.repo &>> $LOGFILE
 VALIDATE $? "Copied Mongdb repo"
 
-dnf install mongo-org -y &>> $LOGFILE
+dnf install mongodb-org -y &>> $LOGFILE
 VALIDATE $? "Installed Mongodb"
 exit 1
 
