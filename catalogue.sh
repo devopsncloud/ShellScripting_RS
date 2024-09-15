@@ -64,6 +64,30 @@ npm install
 VALIDATE $? "Installing Dependencies"
 
 
+cp /home/centos/shell_scripting_RS/catalogue.service /etc/systemd/system/catalogue.service
+VALIDATE $? "catalogue service file copied"
+
+
+
+systemctl daemon-reload &>> $LOGFILE
+VALIDATE $? "daemon reload"
+
+
+systemctl enable catalogue &>> $LOGFILE
+VALIDATE $? "catalogue service enabled"
+
+systemctl start catalogue &>> $LOGFILE
+VALIDATE $? "catalogue service started"
+
+cp /home/centos/shell_scripting_RS/mongo.repo /etc/yum.repos.d/mongo.repo
+VALIDATE $? "mongo repo copied"
+
+
+dnf install mongodb-org-shell -y &>> $LOGFILE
+VALIDATE $? "Nodejs Installation"
+
+
+mongo --host MONGODB-SERVER-IPADDRESS </app/schema/catalogue.js
 
 
 
