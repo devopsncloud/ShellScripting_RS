@@ -47,9 +47,3 @@ VALIDATE $? "redis service enabled"
 systemctl start redis 
 VALIDATE $? "redis service started"
 
-
-systemctl enable redis 
-VALIDATE $? "redis service enabled"
-
-systemctl start redis 
-VALIDATE $? "redis service started"
