@@ -29,6 +29,7 @@ else
     echo "Thanks for being root"
 fi
 
+
 dnf module disable nodejs -y &>> $LOGFILE
 VALIDATE $? "Disabling current node js"
 
@@ -37,7 +38,6 @@ VALIDATE $? "Enabling nodejs:18"
 
 dnf install nodejs -y &>> $LOGFILE
 VALIDATE $? "Nodejs Installation"
-
 
 id roboshop &>> $LOGFILE
 
@@ -52,35 +52,31 @@ fi
 mkdir -p /app
 VALIDATE $? "Application directory creation"
 
-curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip &>> $LOGFILE
+curl -L -o /tmp/user.zip https://roboshop-builds.s3.amazonaws.com/user.zip &>> $LOGFILE
 VALIDATE $? "Application download "
 
 cd /app
-unzip -o /tmp/catalogue.zip  &>> $LOGFILE
-VALIDATE $? "Unzipping catalog"
+unzip -o /tmp/user.zip  &>> $LOGFILE
+VALIDATE $? "Unzipping user"
 
 cd /app
 npm install 
 VALIDATE $? "Installing Dependencies"
 
 
-cp /home/centos/shell_scripting_RS/catalogue.service /etc/systemd/system/catalogue.service
-VALIDATE $? "catalogue service file copied"
-
-
+cp /home/centos/shell_scripting_RS/user.service /etc/systemd/system/user.service
+VALIDATE $? "user service file copied"
 
 systemctl daemon-reload &>> $LOGFILE
 VALIDATE $? "daemon reload"
 
 
-systemctl enable catalogue &>> $LOGFILE
-VALIDATE $? "catalogue service enabled"
+systemctl enable user &>> $LOGFILE
+VALIDATE $? "user service enabled"
 
-systemctl start catalogue &>> $LOGFILE
-VALIDATE $? "catalogue service started"
+systemctl start user &>> $LOGFILE
+VALIDATE $? "user service started"
 
-
-# use absolute, because catalogue.service exists there
 cp /home/centos/shell_scripting_RS/mongo.repo /etc/yum.repos.d/mongo.repo
 VALIDATE $? "mongo repo copied"
 
@@ -90,7 +86,4 @@ VALIDATE $? "Nodejs Installation"
 
 
 mongo --host mongodb.roboriya.shop </app/schema/catalogue.js &>> $LOGFILE
-VALIDATE $? "Loading catalouge data into MongoDB"
-
-
-
+VALIDATE $? "Loading  user data into MongoDB"
