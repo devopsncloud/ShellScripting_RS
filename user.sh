@@ -85,5 +85,5 @@ dnf install mongodb-org-shell -y &>> $LOGFILE
 VALIDATE $? "Nodejs Installation"
 
 
-mongo --host mongodb.roboriya.shop </app/schema/catalogue.js &>> $LOGFILE
+mongo --host mongodb.roboriya.shop </app/schema/user.js &>> $LOGFILE
 VALIDATE $? "Loading  user data into MongoDB"
