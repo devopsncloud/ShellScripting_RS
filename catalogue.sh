@@ -56,7 +56,8 @@ curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zi
 VALIDATE $? "Application download "
 
 cd /app
-unzip -o /tmp/catalogue.zip &>> $LOGFILE
+unzip -o /tmp/catalogue.zip  &>> $LOGFILE
+# unzip -o /tmp/catalogue.zip  &>> $LOGFILE
 VALIDATE $? "Unzipping catalog"
 
 cd /app
@@ -79,6 +80,8 @@ VALIDATE $? "catalogue service enabled"
 systemctl start catalogue &>> $LOGFILE
 VALIDATE $? "catalogue service started"
 
+
+# use absolute, because catalogue.service exists there
 cp /home/centos/shell_scripting_RS/mongo.repo /etc/yum.repos.d/mongo.repo
 VALIDATE $? "mongo repo copied"
 
@@ -88,6 +91,7 @@ VALIDATE $? "Nodejs Installation"
 
 
 mongo --host mongodb.roboriya.shop </app/schema/catalogue.js
+VALIDATE $? "Loading catalouge data into MongoDB"
 
 
 
