@@ -10,7 +10,7 @@ NC="\e[0m"
 VALIDATE(){
     if [ $1 -ne 0 ]
     then
-        echo -e "$2 ...$R [31m FAILED $NC"
+        echo -e "$2 ...$R FAILED $NC"
     else
         echo -e "$2 ... $G SUCCESS $NC "
     fi 
@@ -29,8 +29,10 @@ else
 fi
 
 dnf module disable nodejs -y &>> $LOGFILE
+VALIDATE $? "Disabling current node js"
 
 dnf module enable nodejs:18 -y &>> $LOGFILE
+VALIDATE $? "Enabling nodejs:18"
 
 dnf install nodejs -y &>> $LOGFILE
 VALIDATE $? "Nodejs Installation"
