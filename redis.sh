@@ -41,11 +41,11 @@ VALIDATE $? "redis Installation"
 
 sed -i "s/127.0.0.1/0.0.0.0/g" /etc/redis.conf
 
-systemctl enable user 
-VALIDATE $? "user service enabled"
+systemctl enable redis 
+VALIDATE $? "redis service enabled"
 
-systemctl start user 
-VALIDATE $? "user service started"
+systemctl start redis 
+VALIDATE $? "redis service started"
 
 
 systemctl enable redis 
