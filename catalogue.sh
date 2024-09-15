@@ -49,18 +49,16 @@ else
     echo -e "User roboshop already exists ...$Y SKIPPING $NC"
 fi 
 
-mkdir /app
+mkdir -p /app
 VALIDATE $? "Application directory creation"
 
 curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip &>> $LOGFILE
 VALIDATE $? "Application download "
 
 cd /app
-
 unzip -o /tmp/catalogue.zip &>> $LOGFILE
 
 cd /app
-
 npm install 
 VALIDATE $? "Installing Dependencies"
 
