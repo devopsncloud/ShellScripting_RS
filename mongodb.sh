@@ -10,9 +10,9 @@ NC="\e[0m"
 VALIDATE(){
     if [ $1 -ne 0 ]
     then
-        echo "$2 ... FAILED"
+        echo -e "$2 ...$R [31m FAILED $NC"
     else
-        echo "$2 ... SUCCESS"
+        echo -e "$2 ... $G SUCCESS $NC "
     fi 
 }
 
