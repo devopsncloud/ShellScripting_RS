@@ -51,13 +51,13 @@ VALIDATE $? "Downloading payment"
 cd /app 
 
 unzip -o /tmp/payment.zip &>> $LOGFILE
-VALIDATE $? "Unzipping payment installing dependencies"
+VALIDATE $? "Unzipping payment "
 
 cd /app 
 pip3.6 install -r requirements.txt &>> $LOGFILE
 VALIDATE $? "Installing Dependencies"
 
-cp /home/centos/shell_script_RS/payment.service /etc/systemd/system/patment.service &>> $LOGFILE
+cp /home/centos/shell_script_RS/payment.service /etc/systemd/system/payment.service &>> $LOGFILE
 VALIDATE $? "Copying payment service"
 
 systemctl daemon-reload &>> $LOGFILE
