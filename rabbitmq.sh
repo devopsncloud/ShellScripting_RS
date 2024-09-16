@@ -39,12 +39,15 @@ VALIDATE $? "Downloading RabbitMQ  Script"
 dnf install rabbitmq-server -y &>> $LOGFILE
 VALIDATE $? "RabbitMQ server installation"
 
+
+
 systemctl enable rabbitmq-server &>> $LOGFILE
 VALIDATE $? "Enabling RabbitMQ server"
 
 
 systemctl start rabbitmq-server &>> $LOGFILE
 VALIDATE $? " Starting RabbitMQ server"
+
 
 rabbitmqctl add_user roboshop roboshop123
 VALIDATE $? "Creating User"

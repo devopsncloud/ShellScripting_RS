@@ -73,17 +73,11 @@ systemctl start shipping
 VALIDATE $? "service start"
 
 dnf install mysql -y
-VALIDATE $? "Installed mysql"
+VALIDATE $? "Installed mysql client"
 
 mysql -h mysql.roboriya.shop -uroot -pRoboShop@1 < /app/schema/shipping.sql 
-VALIDATE $? ""
+VALIDATE $? "loading shipping data"
 
 systemctl restart shipping
-VALIDATE $? ""
+VALIDATE $? "Restart Shipping"
 
-
-
-
-
-
-VALIDATE $? ""
