@@ -57,7 +57,7 @@ cd /app
 pip3.6 install -r requirements.txt &>> $LOGFILE
 VALIDATE $? "Installing Dependencies"
 
-cp /home/centos/shell_script_RS/payment.service /etc/systemd/system/payment.service &>> $LOGFILE
+cp /home/centos/shell_scripting_RS/payment.service /etc/systemd/system/payment.service &>> $LOGFILE
 VALIDATE $? "Copying payment service"
 
 systemctl daemon-reload &>> $LOGFILE
