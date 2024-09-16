@@ -26,7 +26,7 @@ then
     echo "You need to be a ROOT user"
     exit 1
 else
-    echo "Thanks for being root"
+    echo "Thanks for being root \n"
 fi
 
 dnf install nginx -y
